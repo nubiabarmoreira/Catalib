@@ -22,7 +22,7 @@ class Livro {
     }
 }
 
-public class Biblioteca {
+public class Livro {
     static ArrayList<Livro> livros = new ArrayList<>();
     static int contadorId = 1;
 
