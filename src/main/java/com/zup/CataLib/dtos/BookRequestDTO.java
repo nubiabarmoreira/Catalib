@@ -15,7 +15,6 @@ public record BookRequestDTO(
         @NotEmpty(message = "A categoria pode estar vazia")
         @NotNull(message = "A categoria não pode ser nula")
         String category,
-        @NotEmpty(message = "O ano de publicação não pode estar vazio")
         @NotNull(message = "O ano de publicação não pode ser nulo")
         int yearPublication,
         @NotNull(message = "O estoque não pode ser nulo")
