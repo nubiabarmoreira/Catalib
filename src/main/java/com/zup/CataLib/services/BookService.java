@@ -5,6 +5,9 @@ import com.zup.CataLib.dtos.BookRequestDTO;
 import com.zup.CataLib.dtos.BookResponseDTO;
 
 public interface BookService {
-    BookResponseDTO registerBookService(BookRequestDTO newBook);
+    void registerBookService();
+    void deleteBook(Long id);
+
+  BookResponseDTO registerBookService(BookRequestDTO newBook);
     List<BookResponseDTO> listAllBooks();
 }

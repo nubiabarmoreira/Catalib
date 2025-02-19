@@ -34,4 +34,11 @@ public class BookServiceImpl implements BookService {
                 .map(BookResponseDTO::)
                 .collect(Collectors.toList());
     }
+
+    public void deleteBook(Long id) {
+        if (!jpaBookRepository.existsById(id)) {
+            throw new RuntimeException("book does not exist");
+        }
+        jpaBookRepository.deleteById(id);
+    }
 }
