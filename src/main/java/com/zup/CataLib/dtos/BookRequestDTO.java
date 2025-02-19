@@ -1,4 +1,4 @@
 package com.zup.CataLib.dtos;
 
-public class BookRequestDTO {
+public record BookRequestDTO(String title, String author, String category) {
 }
