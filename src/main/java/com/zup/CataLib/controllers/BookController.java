@@ -1,5 +1,9 @@
 package com.zup.CataLib.controllers;
 
+import com.zup.CataLib.services.BookServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import com.zup.CataLib.dtos.BookRequestDTO;
 import com.zup.CataLib.dtos.BookResponseDTO;
 import com.zup.CataLib.models.BookEntity;
@@ -14,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
 
     @Autowired
-    private BookService bookService;
+    public BookServiceImpl bookService;
 
     @PostMapping
     public ResponseEntity<BookResponseDTO> registerBookController(@RequestBody BookRequestDTO newBook) {
@@ -22,10 +26,10 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.CREATED).body(saveNewBook);
     }
 
-
     @PutMapping("/{id}")
     public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookRequestDTO bookRequestDTO) {
         BookEntity updateBook = bookService.updateBook(id, bookRequestDTO);
         return ResponseEntity.ok(updateBook);
     }
+
 }

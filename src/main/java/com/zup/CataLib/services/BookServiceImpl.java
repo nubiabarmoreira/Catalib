@@ -1,5 +1,6 @@
 package com.zup.CataLib.services;
 
+
 import com.zup.CataLib.dtos.BookRequestDTO;
 import com.zup.CataLib.dtos.BookResponseDTO;
 import com.zup.CataLib.models.BookEntity;
@@ -11,44 +12,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import java.util.Optional;
-
 @Service
 public class BookServiceImpl implements BookService {
 
-    @Autowired
     private JPABookRepository jpaBookRepository;
-
-    public BookServiceImpl(JPABookRepository jpaBookRepository){
-        this.jpaBookRepository = jpaBookRepository;
-    }
 
     public BookResponseDTO registerBookService(BookRequestDTO newBook) {
         BookEntity newBookEntity = newBook.dtoToEntity();
         BookEntity saveNewBook = jpaBookRepository.save(newBookEntity);
         return BookResponseDTO.entityToDTO(saveNewBook);
-    }
-
-    @Override
-    public List<BookResponseDTO> listAllBooks() {
-        return jpaBookRepository.findAll()
-                .stream()
-                .map(bookEntity -> new BookResponseDTO(
-                        bookEntity.getId(),
-                        bookEntity.getTitle(),
-                        bookEntity.getAuthor(),
-                        bookEntity.getCategory(),
-                        bookEntity.getYearPublication(),
-                        bookEntity.getStock(),
-                        bookEntity.getDescripton()
-                ))
-                .collect(Collectors.toList());
-    }
-
-    public void deleteBook(Long id) {
-        if (!jpaBookRepository.existsById(id)) {
-            throw new RuntimeException("book does not exist");
-        }
-        jpaBookRepository.deleteById(id);
     }
 
     @Override
@@ -60,10 +32,7 @@ public class BookServiceImpl implements BookService {
         if (optionalBook.isEmpty()) {
             throw new RuntimeException("Livro com ID " + id + " não encontrado.");
         }
-
-
         BookEntity bookToUpdate = optionalBook.get();
-
 
         bookToUpdate.setTitle(bookRequestDTO.title());
         bookToUpdate.setAuthor(bookRequestDTO.author());
@@ -72,7 +41,7 @@ public class BookServiceImpl implements BookService {
         bookToUpdate.setStock(bookRequestDTO.stock());
         bookToUpdate.setDescripton(bookRequestDTO.description());
 
-
         return jpaBookRepository.save(bookToUpdate);
     }
+
 }
