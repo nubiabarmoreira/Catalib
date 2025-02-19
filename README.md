@@ -1,6 +1,7 @@
 ﻿<div align="center">
   <img src="src/resources/images/logoCataLibV.png" alt="Logo" width="300">
 </div>
+
 # ☕📚 Documento de Requisitos para o Sistema CataLib
 ## 🌟 Visão Geral do Projeto
 ### 📝 Descrição do Sistema
