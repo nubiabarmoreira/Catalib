@@ -1,4 +1,4 @@
-package com.zup.CataLib.Models;
+package com.zup.CataLib.models;
 
 import jakarta.persistence.*;
 
