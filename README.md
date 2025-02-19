@@ -101,6 +101,7 @@ curl -X DELETE http://localhost:8080/books/1
 ### 📌 Priorização
 1. 🥇 MVP com funcionalidades básicas (CRUD e autenticação).
 2. 🥈 Funcionalidades adicionais (busca, filtros e ordenação).
+   
 💻 Feito com ☕ e Java por:
 - Alessandra Domiciano Soares Silva
 - Flavia Garcias Hespanhol
