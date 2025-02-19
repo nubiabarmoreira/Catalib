@@ -31,7 +31,15 @@ public class BookServiceImpl implements BookService {
     public List<BookResponseDTO> listAllBooks() {
         return jpaBookRepository.findAll()
                 .stream()
-                .map(BookResponseDTO::)
+                .map(bookEntity -> new BookResponseDTO(
+                        bookEntity.getId(),
+                        bookEntity.getTitle(),
+                        bookEntity.getAuthor(),
+                        bookEntity.getCategory(),
+                        bookEntity.getYearPublication(),
+                        bookEntity.getStock(),
+                        bookEntity.getDescripton()
+                ))
                 .collect(Collectors.toList());
     }
 
