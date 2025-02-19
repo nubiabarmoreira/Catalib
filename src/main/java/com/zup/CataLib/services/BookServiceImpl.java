@@ -1,5 +1,7 @@
 package com.zup.CataLib.services;
 
+
+import com.zup.CataLib.dtos.BookRequestDTO;
 import com.zup.CataLib.dtos.BookResponseDTO;
 import com.zup.CataLib.models.BookEntity;
 import com.zup.CataLib.repositories.JPABookRepository;
@@ -19,8 +21,10 @@ public class BookServiceImpl implements BookService {
         this.jpaBookRepository = jpaBookRepository;
     }
 
-    public void registerBookService() {
-
+    public BookResponseDTO registerBookService(BookRequestDTO newBook) {
+        BookEntity newBookEntity = newBook.dtoToEntity();
+        BookEntity saveNewBook = jpaBookRepository.save(newBookEntity);
+        return BookResponseDTO.entityToDTO(saveNewBook);
     }
 
     @Override
