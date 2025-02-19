@@ -13,4 +13,11 @@ public class BookServiceImpl implements BookService {
     public void registerBookService() {
 
     }
+
+    public void deleteBook(Long id) {
+        if (!jpaBookRepository.existsById(id)) {
+            throw new RuntimeException("book does not exist");
+        }
+        jpaBookRepository.deleteById(id);
+    }
 }
